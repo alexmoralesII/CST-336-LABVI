@@ -15,24 +15,85 @@
 <body>
     <h1> Quote Finder </h1>
 
-    <form action="/searchByKeyword" method="GET">
-      Keyword: <input type="text" name="keyword">
-      <button> Search by Keyword </button>
+
+    <form id="searchByKeywordForm" action="/searchByKeyword" method="GET">
+        Keyword: <input type="text" name="keyword" id="keyword">
+        <button> Search by Keyword </button>
     </form> <br><br>
 
 
     <form action="/searchByAuthor" method="GET">
-      Author: 
-      <select name="authorId">
-        <% for (let i of authors) {%>
-         <option value=" <%= i.authorId %> ">
-             <%= i.firstName %> <%= i.lastName %> </option>
+        Author:
+        <select name="authorId">
+            <% for (let i of authors) {%>
+                <option value=" <%= i.authorId %> ">
+                    <%= i.firstName %> <%= i.lastName %> </option>
+            <% } %>
+        </select>
 
-        <% } %> 
-      </select>
-
-      <button> Search by Authors </button>
+        <button> Search by Authors </button>
     </form>
+
+    <form action="/searchByCategory" method="GET">
+        Category:
+        <select name="category">
+            <% for (let i of categories) {%>
+                <option value="<%= i.category %>"><%= i.category %></option>
+            <% } %>
+        </select>
+
+        <button> Search by Category </button>
+    </form>
+
+    <form action="/searchByLikes" method="GET">
+        Likes:
+        <input type="number" name="min" placeholder="Min likes">
+        <input type="number" name="max" placeholder="Max likes">
+
+        <button> Search by Likes </button>
+    </form>
+
+
+
+    <script>
+
+
+        document.querySelector("#searchByKeywordForm").addEventListener("submit", validateKeywordForm);
+
+
+        //ensure that keyword has at least 3 characters
+        function validateKeywordForm(event){
+
+            let keyword = document.querySelector("input[name=keyword]").value;
+            if (keyword.length < 3) {
+                alert("keyword must be at least 3 characters");
+                event.preventDefault(); //prevents the form submission.
+            }
+
+        }
+
+
+    </script>
+<!--    <h1> Quote Finder </h1>-->
+
+<!--    <form action="/searchByKeyword" method="GET">-->
+<!--      Keyword: <input type="text" name="keyword">-->
+<!--      <button> Search by Keyword </button>-->
+<!--    </form> <br><br>-->
+
+
+<!--    <form action="/searchByAuthor" method="GET">-->
+<!--      Author: -->
+<!--      <select name="authorId">-->
+<!--        <% for (let i of authors) {%>-->
+<!--         <option value=" <%= i.authorId %> ">-->
+<!--             <%= i.firstName %> <%= i.lastName %> </option>-->
+
+<!--        <% } %> -->
+<!--      </select>-->
+
+<!--      <button> Search by Authors </button>-->
+<!--    </form>-->
 
     <%- include('partials/footer.ejs')%>
 

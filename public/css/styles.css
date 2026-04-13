@@ -3,7 +3,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #648ca7;
+    background-color: darkolivegreen;
     font-family: Arial, sans-serif;
 }
 
@@ -26,7 +26,10 @@ footer {
 h1 {
     color: #fffbfb;
     margin: 0px 0;
-    background-color: #357abd;
+    background-color: dimgrey;
+    font-family: Didot;
+    margin-bottom: 100px;
+    padding: 30px;
 }
 
 form {
@@ -39,8 +42,8 @@ form {
 }
 
 button {
-    background-color: #4a90d9;
-    color: white;
+    background-color: beige;
+    color: black;
     border: none;
     padding: 7px 16px;
     border-radius: 4px;
@@ -48,5 +51,5 @@ button {
 }
 
 button:hover {
-    background-color: #357abd;
+    background-color: tan;
 }

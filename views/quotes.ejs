@@ -12,19 +12,57 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 </head>
-
 <body>
     <head><%- include('partials/navbar.ejs')%></head>
-    <h1>Famous Quotes</h1>
+    <h1 class="text-center"> Famous Quotes </h1>
+
+    <nav class="text-center"> <a href="/"> Home </a></nav>
 
     <div class="container">
-        <% for (let i of rows) { %>
-            <%= i.quote %> <br>
-                <%= i.firstName %>
-                    <%= i.lastName %> <br> <br>
 
-                        <% } %>
+        <% for (let i of rows) { %>
+            <i class="fs-5"> <%= i.quote %> </i><br>
+            <a href="#" class="authorNames" authorId="<%= i.authorId %>">
+                <%= i.firstName %> <%= i.lastName %></a><br><br>
+        <% } %>
+
     </div>
+
+    <!-- creating modal window -->
+    <dialog id="authorModal">
+        <div id="authorInfo">
+            <button id="closeModal"> Close </button>
+            <h1 id="authorName"></h1>
+            <img id="authorPicture" width="300">
+
+        </div>
+    </dialog>
+
+    <script src="/js/quotes.js"></script>
+
+<!--    <h1>Famous Quotes</h1>-->
+
+<!--    <div class="container">-->
+<!--        <% for (let i of rows) { %>-->
+<!--            <%= i.quote %> <br>-->
+<!--                <a href = "#" class = "authorNames"-->
+<!--                    authorId = "<%= i.authorId %>">-->
+<!--                    <%= i.firstName %>-->
+<!--                    <%= i.lastName %>-->
+<!--                </a> <br> <br>-->
+
+<!--                        <% } %>-->
+<!--    </div>-->
+<!--    <dialog id = "authorModal">-->
+<!--        <div id = "authorInfo">-->
+<!--            <button id = "closeModal" type = "button">Close</button>-->
+<!--            <h1 id = "authorName"> </h1>-->
+<!--            <img id = "authorPicture" width = "300px">-->
+<!--        </div>-->
+<!--    </dialog>-->
+
+
+<!--    <script src = "/js/quotes.js"></script>-->
 
     <%- include('partials/footer.ejs')%>
 
